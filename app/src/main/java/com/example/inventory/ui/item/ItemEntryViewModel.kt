@@ -26,6 +26,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
     fun updateUiState(itemDetails: ItemDetails) {
         itemUiState =
             ItemUiState(itemDetails = itemDetails, isEntryValid = validateInput(itemDetails))
+
     }
 
     suspend fun saveItem() {
