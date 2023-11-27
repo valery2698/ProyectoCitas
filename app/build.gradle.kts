@@ -20,11 +20,12 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp") version "1.8.21-1.0.11"
+    id("com.google.gms.google-services")
 }
 
 android {
-    compileSdk = 33
 
+    compileSdk = 34
     defaultConfig {
         applicationId = "com.example.inventory"
         minSdk = 24
@@ -80,6 +81,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     // Testing
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -89,5 +92,9 @@ dependencies {
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
 
+    //Extended icons
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
 }
