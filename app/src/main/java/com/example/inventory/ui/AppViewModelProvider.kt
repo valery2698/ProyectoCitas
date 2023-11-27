@@ -10,6 +10,7 @@ import com.example.inventory.ui.home.HomeViewModel
 import com.example.inventory.ui.item.ItemDetailsViewModel
 import com.example.inventory.ui.item.ItemEditViewModel
 import com.example.inventory.ui.item.ItemEntryViewModel
+import com.example.inventory.ui.login.LoginScreenViewModel
 
 
 object AppViewModelProvider {
@@ -36,6 +37,11 @@ object AppViewModelProvider {
         // Initializer for HomeViewModel
         initializer {
             HomeViewModel(inventoryApplication().container.itemsRepository)
+        }
+
+        // Initializer for LoginScreenViewModel
+        initializer {
+            LoginScreenViewModel(inventoryApplication().container.itemsRepository)
         }
     }
 }
