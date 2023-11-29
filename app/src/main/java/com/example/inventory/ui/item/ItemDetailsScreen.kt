@@ -23,7 +23,6 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -119,14 +118,14 @@ private fun ItemDetailsBody(
             item = itemDetailsUiState.itemDetails.toItem(),
             modifier = Modifier.fillMaxWidth()
         )
-        Button(
+       /* Button(
             onClick = onSellItem,
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.small,
             enabled = true
         ) {
             Text(stringResource(R.string.sell))
-        }
+        }*/
         OutlinedButton(
             onClick = { deleteConfirmationRequired = true },
             shape = MaterialTheme.shapes.small,
@@ -176,14 +175,21 @@ fun ItemDetails(
             )
             ItemDetailsRow(
                 labelResID = R.string.quantity_in_stock,
-                itemDetail = item.quantity.toString(),
+                itemDetail = item.servicio,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.padding_medium)
                 )
             )
             ItemDetailsRow(
                 labelResID = R.string.price,
-                itemDetail = item.formatedPrice(),
+                itemDetail = item.hora,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(id = R.dimen.padding_medium)
+                )
+            )
+            ItemDetailsRow(
+                labelResID = R.string.date,
+                itemDetail = item.fecha,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.padding_medium)
                 )
@@ -232,7 +238,7 @@ fun ItemDetailsScreenPreview() {
         ItemDetailsBody(
             ItemDetailsUiState(
                 outOfStock = true,
-                itemDetails = ItemDetails(1, "Pen", "$100", "10")
+                itemDetails = ItemDetails(1, "Ana Castillo", "Corte", "10","26/11/98")
             ),
             onSellItem = {},
             onDelete = {}

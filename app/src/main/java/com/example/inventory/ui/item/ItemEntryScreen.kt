@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -19,7 +18,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.inventory.InventoryTopAppBar
@@ -106,6 +104,7 @@ fun ItemInputForm(
     onValueChange: (ItemDetails) -> Unit = {},
     enabled: Boolean = true
 ) {
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
@@ -124,25 +123,23 @@ fun ItemInputForm(
             singleLine = true
         )
         OutlinedTextField(
-            value = itemDetails.price,
-            onValueChange = { onValueChange(itemDetails.copy(price = it)) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            label = { Text(stringResource(R.string.item_price_req)) },
+            value = itemDetails.servicio,
+            onValueChange = { onValueChange(itemDetails.copy(servicio = it)) },
+            label = { Text(stringResource(R.string.item_servicio_req)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                 unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                 disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
             ),
-            leadingIcon = { Text(Currency.getInstance(Locale.getDefault()).symbol) },
+          //  leadingIcon = { Text(Currency.getInstance(Locale.getDefault()).symbol) },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
-            singleLine = true
+            singleLine = false
         )
         OutlinedTextField(
-            value = itemDetails.quantity,
-            onValueChange = { onValueChange(itemDetails.copy(quantity = it)) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = { Text(stringResource(R.string.quantity_req)) },
+            value = itemDetails.hora,
+            onValueChange = { onValueChange(itemDetails.copy(hora = it)) },
+            label = { Text(stringResource(R.string.hora_req)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
                 unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -152,14 +149,80 @@ fun ItemInputForm(
             enabled = enabled,
             singleLine = true
         )
+
+       OutlinedTextField(
+            value = itemDetails.fecha,
+            onValueChange = { onValueChange(itemDetails.copy(fecha = it)) },
+            label = { Text(stringResource(R.string.date_req)) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            ),
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true,
+
+        )
+
+        //Fecha
+
+       /* var selectedDate by remember() {
+            mutableStateOf("")
+        }
+
+        var showDatePickerDialog by remember {
+            mutableStateOf(false)
+        }
+
+        val datePickerState = rememberDatePickerState()
+        if (showDatePickerDialog) {
+            DatePickerDialog(
+                onDismissRequest = { showDatePickerDialog = false },
+                confirmButton = {  Button(onClick = { showDatePickerDialog = false }) {
+                    Text(text = "Guardar")
+                }
+                }) {
+                DatePicker(state = datePickerState)
+            }
+        }
+
+        OutlinedTextField(
+            value = selectedDate,
+            onValueChange = { onValueChange(itemDetails.copy(fecha = it)) },
+            label = { Text(stringResource(R.string.date_req)) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                disabledContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+            ),
+            modifier = Modifier.padding(8.dp)
+                .fillMaxWidth()
+                .onFocusChanged {
+                    if (it.isFocused) {
+                        showDatePickerDialog = true
+                    }
+                },
+            enabled = enabled,
+            readOnly = true
+
+            )*/
+
+
+
         if (enabled) {
             Text(
                 text = stringResource(R.string.required_fields),
                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
             )
         }
+
     }
 }
+
+
+
+
 
 @Preview(showBackground = true)
 @Composable
@@ -167,7 +230,7 @@ private fun ItemEntryScreenPreview() {
     InventoryTheme {
         ItemEntryBody(itemUiState = ItemUiState(
             ItemDetails(
-                name = "Item name", price = "10.00", quantity = "5"
+                name = "Ana Castillo", servicio = "Corte", hora = "5:00", fecha="26/11/98"
             )
         ), onItemValueChange = {}, onSaveClick = {})
     }
