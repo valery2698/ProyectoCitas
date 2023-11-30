@@ -1,5 +1,6 @@
 package com.example.inventory.ui.login
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -57,6 +58,7 @@ object LoginDestination : NavigationDestination {
 
 @Composable
 fun LoginScreen(
+    context: Context,
     navigateToHome: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: LoginScreenViewModel = viewModel(factory = AppViewModelProvider.Factory)
@@ -87,7 +89,7 @@ fun LoginScreen(
                ){
                    email, password ->
                    Log.d("Cita", "Logueado con $email y $password")
-                   viewModel.signInWithEmailAndPassword(email, password){
+                   viewModel.signInWithEmailAndPassword(email, password,context){
                        navigateToHome()
                    }
                }
@@ -100,7 +102,7 @@ fun LoginScreen(
                {
                        email, password ->
                    Log.d("Cita", "Creando cuenta con $email y $password")
-                   viewModel.createUserWithEmailAndPassword(email, password){
+                   viewModel.createUserWithEmailAndPassword(email, password,context){
                        navigateToHome()
                    }
                }
@@ -266,7 +268,7 @@ fun InputField(
         )
     )
 }
-
+/*
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
@@ -274,3 +276,4 @@ fun LoginScreenPreview() {
         LoginScreen({})
     }
 }
+*/
