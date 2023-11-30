@@ -1,5 +1,6 @@
 package com.example.inventory.ui.navigation
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -23,6 +24,7 @@ import com.example.inventory.ui.login.LoginScreen
  */
 @Composable
 fun InventoryNavHost(
+    context: Context,
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
@@ -32,7 +34,7 @@ fun InventoryNavHost(
         modifier = modifier
     ) {
         composable(route = LoginDestination.route) {
-            LoginScreen(
+            LoginScreen(context,
                 navigateToHome = { navController.navigate(HomeDestination.route) }
             )
         }

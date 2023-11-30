@@ -5,7 +5,7 @@
     <string name="back_button">Atras</string>
     <string name="delete">Eliminar</string>
     <string name="delete_question">Seguro que quiere eliminar la cita?</string>
-    <string name="no_item_description">Oops!\nNo tiene citas agendadas.\nClick + para agendar una cita.</string>
+    <string name="no_item_description">\nNo tiene citas agendadas.\nClick + para agendar una cita.</string>
     <string name="edit_item_title">Editar Cita</string>
     <string name="item">Cita</string>
     <string name="item_detail_title">Detalle Cita</string>
@@ -34,4 +34,6 @@
     <string name="invalid_password">La contraseña debe tener más de 6 caracteres</string>
     <string name="login_failed">"Error de inicio de sesion"</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="credenciales_incorrectos">"Credenciales incorrectos"</string>
+    <string name="register_failed">"Error a la hora de crear el usuario, valide los datos digitados"</string>
 </resources>

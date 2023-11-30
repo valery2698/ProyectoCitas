@@ -3,6 +3,7 @@
 package com.example.inventory
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -24,8 +25,8 @@ import com.example.inventory.ui.navigation.InventoryNavHost
  */
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun InventoryApp(navController: NavHostController = rememberNavController()) {
-    InventoryNavHost(navController = navController)
+fun InventoryApp(context: Context, navController: NavHostController = rememberNavController()) {
+    InventoryNavHost(context,navController = navController)
 }
 
 /**
