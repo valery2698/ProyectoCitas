@@ -24,7 +24,7 @@ class ItemDetailsViewModel(
         itemsRepository.getItemStream(itemId)
             .filterNotNull()
             .map {
-                ItemDetailsUiState(outOfStock = it.quantity <= 0, itemDetails = it.toItemDetails())
+                ItemDetailsUiState(outOfStock = it.hora =="", itemDetails = it.toItemDetails())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
@@ -35,8 +35,8 @@ class ItemDetailsViewModel(
     fun reduceQuantityByOne() {
         viewModelScope.launch {
             val currentItem = uiState.value.itemDetails.toItem()
-            if (currentItem.quantity > 0) {
-                itemsRepository.updateItem(currentItem.copy(quantity = currentItem.quantity - 1))
+            if (currentItem.hora != "") {
+                itemsRepository.updateItem(currentItem.copy(hora = currentItem.hora))
             }
         }
     }

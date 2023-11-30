@@ -13,7 +13,8 @@ data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
-    val price: Double,
-    val quantity: Int
+    val servicio: String,
+    val hora: String,
+    val fecha: String
 )
 

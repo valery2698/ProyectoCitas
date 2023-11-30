@@ -37,7 +37,7 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
 
     private fun validateInput(uiState: ItemDetails = itemUiState.itemDetails): Boolean {
         return with(uiState) {
-            name.isNotBlank() && price.isNotBlank() && quantity.isNotBlank()
+            name.isNotBlank() && servicio.isNotBlank() && hora.isNotBlank() && fecha.isNotBlank()
         }
     }
 }
@@ -53,8 +53,9 @@ data class ItemUiState(
 data class ItemDetails(
     val id: Int = 0,
     val name: String = "",
-    val price: String = "",
-    val quantity: String = "",
+    val servicio: String = "",
+    val hora: String = "",
+    val fecha: String = ""
 )
 
 /**
@@ -65,12 +66,13 @@ data class ItemDetails(
 fun ItemDetails.toItem(): Item = Item(
     id = id,
     name = name,
-    price = price.toDoubleOrNull() ?: 0.0,
-    quantity = quantity.toIntOrNull() ?: 0
+    servicio = servicio,
+    hora = hora,
+    fecha = fecha
 )
 
 fun Item.formatedPrice(): String {
-    return NumberFormat.getCurrencyInstance().format(price)
+    return NumberFormat.getCurrencyInstance().format(servicio)
 }
 
 /**
@@ -87,6 +89,9 @@ fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState
 fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,
     name = name,
-    price = price.toString(),
-    quantity = quantity.toString()
+    servicio = servicio,
+    hora = hora,
+    fecha = fecha
 )
+
+
