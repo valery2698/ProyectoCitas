@@ -151,10 +151,10 @@ private fun InventoryItem(
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                Text(
+                /*Text(
                     text = item.servicio,
                     style = MaterialTheme.typography.titleMedium
-                )
+                )*/
             }
             Text(
                 text = item.hora,
@@ -173,7 +173,7 @@ private fun InventoryItem(
 fun HomeBodyPreview() {
     InventoryTheme {
         HomeBody(listOf(
-            Item(1, "Game", "Barba", "20:00","26/11/98"), Item(2, "Pen", "Plancha", "2:00", "26/11/98"), Item(3, "TV", "Corte", "5:00","26/11/98")
+            Item(1, "Diego Castillo", "Barba", "20:00","26/11/2023"), Item(2, "Ana Rojas", "Plancha", "2:00", "26/12/2023"), Item(3, "TV", "Corte", "5:00","26/01/2024")
         ), onItemClick = {})
     }
 }
@@ -191,7 +191,7 @@ fun HomeBodyEmptyListPreview() {
 fun InventoryItemPreview() {
     InventoryTheme {
         InventoryItem(
-            Item(1, "Game", "Corte", "2:00","26/11/98"),
+            Item(1, "Maria Castro", "Corte", "2:00","26/11/98"),
         )
     }
 }
