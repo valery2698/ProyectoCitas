@@ -1,6 +1,7 @@
 package com.example.inventory.ui.login
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -32,6 +35,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -62,12 +67,19 @@ fun LoginScreen(
         mutableStateOf(true)
     }
     Surface(modifier = Modifier
-    .fillMaxSize()
+    .fillMaxSize(),
+        color = Color.White
     ){
        Column(
            horizontalAlignment = Alignment.CenterHorizontally,
            verticalArrangement = Arrangement.Center
        ) {
+           Image(painter = painterResource(id = R.drawable.logoproyectofinal), contentDescription = null,
+               modifier = Modifier
+               .width(300.dp)
+               .padding(top = 16.dp))
+           Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
+           Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
            if(showLoginForm.value){
                Text(text = "Inicia sesión")
                UserForm(
@@ -141,7 +153,7 @@ fun UserForm(
         EmailInput(emailState = email)
         PasswordInput(
             passwordState = password,
-            labelId = "Password",
+            labelId = "Contraseña",
             passwordVisible = passwordVisible
         )
         SubmitButton(
