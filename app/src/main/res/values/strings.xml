@@ -15,7 +15,7 @@
     <string name="no">No</string>
     <string name="price">Hora</string>
     <string name="date">Fecha</string>
-    <string name="quantity_in_stock">Quantity in stock</string>
+    <string name="quantity_in_stock">Servicio</string>
     <string name="in_stock">%d in stock</string>
     <string name="hora_req">Hora*</string>
     <string name="date_req">Fecha*</string>
