@@ -89,4 +89,13 @@ class LoginScreenViewModel(itemsRepository: ItemsRepository): ViewModel() {
             }
         }
     }
+    fun SignOut()
+    {
+        try {
+            auth.signOut()
+        }catch (e: Exception)
+        {
+            Log.e("Citas", "Error en SignOut: ${e.message}", e)
+        }
+    }
 }

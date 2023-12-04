@@ -44,6 +44,7 @@ import com.example.inventory.R
 import com.example.inventory.data.Item
 import com.example.inventory.ui.AppViewModelProvider
 import com.example.inventory.ui.item.formatedPrice
+import com.example.inventory.ui.login.LoginScreenViewModel
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 
@@ -61,6 +62,8 @@ object HomeDestination : NavigationDestination {
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
     navigateToItemUpdate: (Int) -> Unit,
+    navigateToLogin: () -> Unit,
+    modeloLogin: LoginScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -73,7 +76,9 @@ fun HomeScreen(
             InventoryTopAppBar(
                 title = stringResource(HomeDestination.titleRes),
                 canNavigateBack = false,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
+                navigateToLogin = navigateToLogin,
+                modeloLogin
             )
         },
         floatingActionButton = {

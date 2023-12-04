@@ -42,6 +42,7 @@ import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.inventory.ui.AppViewModelProvider
+import com.example.inventory.ui.login.LoginScreenViewModel
 import kotlinx.coroutines.launch
 
 object ItemDetailsDestination : NavigationDestination {
@@ -57,7 +58,9 @@ fun ItemDetailsScreen(
     navigateToEditItem: (Int) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: ItemDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    viewModel: ItemDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    navigateToLogin: () -> Unit,
+    modeloLogin: LoginScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
 
     val uiState = viewModel.uiState.collectAsState()
@@ -68,7 +71,9 @@ fun ItemDetailsScreen(
             InventoryTopAppBar(
                 title = stringResource(ItemDetailsDestination.titleRes),
                 canNavigateBack = true,
-                navigateUp = navigateBack
+                navigateUp = navigateBack,
+                navigateToLogin = navigateToLogin,
+                modelo = modeloLogin
             )
         }, floatingActionButton = {
             FloatingActionButton(

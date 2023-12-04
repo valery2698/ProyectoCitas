@@ -23,6 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.inventory.InventoryTopAppBar
 import com.example.inventory.R
 import com.example.inventory.ui.AppViewModelProvider
+import com.example.inventory.ui.login.LoginScreenViewModel
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 import kotlinx.coroutines.launch
@@ -40,6 +41,8 @@ fun ItemEntryScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     canNavigateBack: Boolean = true,
+    navigateToLogin: () -> Unit,
+    modeloLogin: LoginScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
     viewModel: ItemEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -48,7 +51,10 @@ fun ItemEntryScreen(
             InventoryTopAppBar(
                 title = stringResource(ItemEntryDestination.titleRes),
                 canNavigateBack = canNavigateBack,
-                navigateUp = onNavigateUp
+                navigateUp = onNavigateUp,
+                navigateToLogin = navigateToLogin,
+                scrollBehavior = null,
+                modelo = modeloLogin
             )
         }
     ) { innerPadding ->

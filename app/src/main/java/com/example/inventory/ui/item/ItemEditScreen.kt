@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.inventory.InventoryTopAppBar
 import com.example.inventory.R
 import com.example.inventory.ui.AppViewModelProvider
+import com.example.inventory.ui.login.LoginScreenViewModel
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
 import kotlinx.coroutines.launch
@@ -29,7 +30,9 @@ fun ItemEditScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: ItemEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    viewModel: ItemEditViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    navigateToLogin: () -> Unit,
+    modeloLogin: LoginScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
 
     val coroutineScope = rememberCoroutineScope()
@@ -39,7 +42,9 @@ fun ItemEditScreen(
             InventoryTopAppBar(
                 title = stringResource(ItemEditDestination.titleRes),
                 canNavigateBack = true,
-                navigateUp = onNavigateUp
+                navigateUp = onNavigateUp,
+                navigateToLogin = navigateToLogin,
+                modelo = modeloLogin
             )
         },
         modifier = modifier
@@ -62,6 +67,6 @@ fun ItemEditScreen(
 @Composable
 fun ItemEditScreenPreview() {
     InventoryTheme {
-        ItemEditScreen(navigateBack = { /*Do nothing*/ }, onNavigateUp = { /*Do nothing*/ })
+        ItemEditScreen(navigateBack = { /*Do nothing*/ }, onNavigateUp = { /*Do nothing*/ },navigateToLogin = {})
     }
 }

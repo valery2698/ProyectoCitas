@@ -43,13 +43,15 @@ fun InventoryNavHost(
                 navigateToItemEntry = { navController.navigate(ItemEntryDestination.route) },
                 navigateToItemUpdate = {
                     navController.navigate("${ItemDetailsDestination.route}/${it}")
-                }
+                },
+                navigateToLogin = { navController.navigate(LoginDestination.route) }
             )
         }
         composable(route = ItemEntryDestination.route) {
             ItemEntryScreen(
                 navigateBack = { navController.popBackStack() },
-                onNavigateUp = { navController.navigateUp() }
+                onNavigateUp = { navController.navigateUp() },
+                navigateToLogin = { navController.navigate(LoginDestination.route) }
             )
         }
         composable(
@@ -60,7 +62,8 @@ fun InventoryNavHost(
         ) {
             ItemDetailsScreen(
                 navigateToEditItem = { navController.navigate("${ItemEditDestination.route}/$it") },
-                navigateBack = { navController.navigateUp() }
+                navigateBack = { navController.navigateUp() },
+                navigateToLogin = { navController.navigate(LoginDestination.route) }
             )
         }
         composable(
@@ -71,7 +74,8 @@ fun InventoryNavHost(
         ) {
             ItemEditScreen(
                 navigateBack = { navController.popBackStack() },
-                onNavigateUp = { navController.navigateUp() }
+                onNavigateUp = { navController.navigateUp() },
+                navigateToLogin = { navController.navigate(LoginDestination.route) }
             )
         }
     }
